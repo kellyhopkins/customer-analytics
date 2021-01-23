@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  customer-analytics:
+    image: customer-analytics:1.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8050:8050
+
+# services:
+#   customer-analytics:
+#     build:
+#       context: .
+#     image: customer-analytics:$VERSION
+#     container_name: customer-analytics
+#     ports:
+#       - "80:8050"
+#     environment:
+#       - TARGET=$TARGET
+#     restart: unless-stopped

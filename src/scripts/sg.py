@@ -8,8 +8,8 @@ import glob
 import numpy as np
 import pandas as pd
 
+# data_path = '../../data'
 data_path = '../../data'
-# data_path = '../data'
 
 cbg_pop = pd.read_csv(f"{data_path}/raw/census/data/cbg_b01.csv", usecols=['census_block_group','B01001e1'])
 cbg_pop_dict = dict(zip(cbg_pop.iloc[:,0], cbg_pop.iloc[:,1]))
