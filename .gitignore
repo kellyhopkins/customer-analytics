@@ -123,3 +123,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#restricted data
+/data/raw/safegraph
+/data/raw/census/*
