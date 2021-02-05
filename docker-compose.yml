@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  customer-analytics:
+  dashboard:
     image: customer-analytics:1.0
     build:
       context: .
