@@ -1,1 +1,1 @@
-web: python src/sripts/dashboard.py
+web: python dashboard.py
