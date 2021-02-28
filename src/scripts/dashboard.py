@@ -8,11 +8,12 @@ import os
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
+from whitenoise import WhiteNoise
 # import sg
 
 # File paths
 data_path = '../../data'
-maps_dir = '../maps/'
+maps_dir = 'static/'
 
 #Data
 dtypes = {
@@ -39,6 +40,7 @@ external_stylesheets = [os.path.join('style.css'), 'https://codepen.io/chriddyp/
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
+server.wsgi_app = WhiteNoise(server.wsgi_app, root='static/')
 
 container = html.Div([
 
