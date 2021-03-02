@@ -1,1 +1,1 @@
-web: gunicorn src\scripts\app:server
+web: gunicorn src/scripts/app:server
