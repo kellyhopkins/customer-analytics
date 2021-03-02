@@ -12,7 +12,7 @@ from whitenoise import WhiteNoise
 # import sg
 
 # File paths
-data_path = '../../data'
+data_path = 'data'
 maps_dir = 'static/'
 
 #Data
