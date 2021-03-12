@@ -51,9 +51,13 @@ container = html.Div([
                 html.H3("Analyzing foot traffic data from SafeGraph", className='lead'),
                 html.Hr(className='my-2'),
                 html.P("What factors draw customers to visit their favorite stores, even in a pandemic? In an new era of reduced travel and extra safety precautions, which brands have prevailed so far? These are some of the questions our team sought to answer through our capstone project as considered the economic impacts of the COVID-19 pandemic. By analyzing consumer shopping behavior, we hope to find trends about how people spend money in their communities."),
-                html.P(dbc.Button("Read the Report", color="primary"))
+                html.P([
+                    dbc.Button("Read the Report", color="outline-primary", href="https://s3.us-east-2.amazonaws.com/kelly-hopkins.com/Team+60+Final+Report.pdf", target="_blank"),
+                    dbc.Button("Watch Presentation", color="outline-primary", href="https://youtu.be/a6cOmE1XzcY", target="_blank", className="mx-2"),
+                    dbc.Button("View the Code", color="outline-primary", href="https://github.com/kellyhopkins/customer-analytics", target="_blank"),
+                    ]),
             ])
-        ]))
+        ], style={"color": "black"}))
     ]),
 
     dbc.Row([
@@ -105,50 +109,22 @@ container = html.Div([
                 ])], width=6)
             ]),
             
-            # dbc.Row([
-            #     dbc.Col([
-            #         html.Div([
-            #             html.H1("Store Locations")
-            #         ])
-            #     ], width=12),
-            #     dbc.Col([
-            #         dcc.Dropdown(
-            #             options = [{"label":x, "value":x} for x in ["NJ", "PA", "DE"]],
-            #             value = "PA",
-            #             id='state-dropdown'
-            #         )
-            #     ], width=6, className='mb-4'),
-            #     dbc.Col([
-            #         dcc.Dropdown(
-            #             options = [{"label":x, "value":x} for x in ["starbucks", "dunkin'"]],
-            #             value = "starbucks",
-            #             id='brand-dropdown'
-            #         )
-            #     ], width=6, className='mb-4'),
-            #     dbc.Col([
-            #         html.Iframe(
-            #             height='500',
-            #             width='100%',
-            #             srcDoc=open(f"{maps_dir}popularity_by_hour_0.html", 'r').read()
-            #         )
-            #     ], width=6),
-            #     dbc.Col([
-            #         dbc.Table.from_dataframe(df[df['region'] == 'PA'].head(10), striped=True, bordered=True, hover=True)
-            #     ], width=6)
-            # ], className="text-center", id="widget"),
+            
             
             dbc.Row([
                 dbc.Col([
+                    html.Div(id='map'),
                     html.P("Filter Option: "),
-                    dcc.Dropdown(
+                    dcc.RadioItems(
                         options=[
                             {'label': 'Hour', 'value': 'Hour'},
                             {'label': 'Day', 'value': 'Day'},
                         ],
                         value='Day',
+                        # labelStyle={'display': 'inline-block'},
                         id='filter-control'
                     ),
-                    html.Div(id='map'),
+                    # html.Div(id='map'),
                     html.Div([
                         dcc.Slider(
                             id='slider',
@@ -167,50 +143,9 @@ container = html.Div([
         dbc.Col(width=1)
     ]),
 
-
-
-    # dbc.Row([
-    #     dbc.Col(width=2),
-    #     dbc.Col(html.Div([
-    #         html.P("Filter Option: "),
-    #         dcc.Dropdown(
-    #             options=[
-    #                 {'label': 'Hour', 'value': 'Hour'},
-    #                 {'label': 'Day', 'value': 'Day'},
-    #             ],
-    #             value='Day',
-    #             id='filter-control'
-    #         )  
-    #     ]), width=6),
-    #     dbc.Col(width=4),
-    #     dbc.Col(width=2),
-    #     dbc.Col(html.Div(id='map'), width=8),
-    #     dbc.Col(width=2),
-    #     dbc.Col(width=2),
-    #     dbc.Col(html.Div([
-    #         dcc.Slider(
-    #             id='slider',
-    #             min=0,
-    #             max=6,
-    #             value=0,
-    #             marks= days,
-    #             step=None
-    #         )
-    #     ], id='slider-control'),width=8),
-    #     dbc.Col(width=2)
-    # ])
-
-
 #end    
 ])
 
-
-# @app.callback(
-#     Output(component_id='text-output', component_property='children'),
-#     Input(component_id='text-input', component_property='value')
-# )
-# def update_output_div(input_value):
-#     return f"Output: {input_value}"
 
 @app.callback(
     Output("slider-control", "children"),
